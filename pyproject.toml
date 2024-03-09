@@ -1,6 +1,6 @@
 [project]
 name = "pycountries"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="Ivan Koldakov", email="ivan@koldakov.com" },
 ]
@@ -24,7 +24,10 @@ Homepage = "https://github.com/AivGitHub/pycountries"
 Issues = "https://github.com/AivGitHub/pycountries/issues"
 
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = [
+    "setuptools>=61.0",
+    "pydantic>=2.6.3",
+]
 build-backend = "setuptools.build_meta"
 
 [tool.ruff]
