@@ -1,18 +1,8 @@
 from enum import Enum, EnumType
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
-
-class UnitBase(BaseModel):
-    alpha_3: str = Field(
-        min_length=3,
-        max_length=3,
-    )
-    numeric: str = Field(
-        min_length=3,
-        max_length=3,
-    )
-    name: str
+from pycountries.base import UnitBase
 
 
 class CountryUnit(UnitBase):
