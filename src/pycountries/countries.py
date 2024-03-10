@@ -21,6 +21,12 @@ class _CountryEnumType(EnumType):
                 return unit
         raise ValueError(f'"{value}" is not a valid {cls.__qualname__}') from None
 
+    def __getitem__(cls, name):  # noqa: N805
+        try:
+            return super().__getitem__(name)
+        except KeyError as err:
+            raise ValueError(f'"{name}" is not a valid {cls.__qualname__}') from err
+
 
 class Country(Enum, metaclass=_CountryEnumType):
     """
