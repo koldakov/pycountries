@@ -17,7 +17,11 @@ class _CountryEnumType(EnumType):
         _members = cls.__members__.values()  # type: ignore
         unit: CountryUnit
         for unit in _members:
-            if value == unit.alpha_2:
+            if value in [
+                unit.alpha_2,
+                unit.alpha_3,
+                unit.numeric,
+            ]:
                 return unit
         raise ValueError(f'"{value}" is not a valid {cls.__qualname__}') from None
 

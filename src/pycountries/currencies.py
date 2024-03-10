@@ -31,7 +31,10 @@ class _CurrencyEnumType(EnumType):
         _members = cls.__members__.values()  # type: ignore
         unit: CurrencyUnit
         for unit in _members:
-            if value in unit.alpha_3:
+            if value in [
+                unit.alpha_3,
+                unit.numeric,
+            ]:
                 return unit
         raise ValueError(f'"{value}" is not a valid {cls.__qualname__}') from None
 
