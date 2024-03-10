@@ -1,4 +1,8 @@
 # About The Project
+[![PyPI](https://img.shields.io/pypi/v/pycountries?logo=python&logoColor=white)][pypi_proj]
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/pycountries?logo=python&logoColor=white)][pypi_proj]
+[![PyPI - License](https://img.shields.io/pypi/l/pycountries?logo=open-source-initiative&logoColor=white)](https://github.com/AivGitHub/pycountries/blob/main/LICENSE.md)
+[![docs](https://img.shields.io/readthedocs/pycountries?logo=readthedocs&logoColor=white)][documentation]
 
 Python country and currency enum.
 
@@ -58,3 +62,7 @@ Project Link: https://github.com/AivGitHub/pycountries
 Best regards,
 
 [Ivan Koldakov](https://www.linkedin.com/in/aiv/)
+
+
+[pypi_proj]: https://pypi.org/project/pycountries/
+[documentation]: https://pycountries.readthedocs.io
