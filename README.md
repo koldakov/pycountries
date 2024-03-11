@@ -8,7 +8,7 @@ Python country and currency enum.
 
 ## Requirements
 
-1. Python >= 3.12
+1. Python >= 3.11
 
 ## Development
 
