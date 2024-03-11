@@ -1,9 +1,14 @@
-from enum import Enum, EnumType
+from enum import Enum
 from functools import cache
 
 from pydantic import Field
 
 from pycountries.base import UnitBase
+
+try:
+    from enum import EnumType
+except ImportError:
+    from enum import EnumMeta as EnumType
 
 
 class CurrencyUnit(UnitBase):

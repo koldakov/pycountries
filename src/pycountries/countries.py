@@ -1,8 +1,13 @@
-from enum import Enum, EnumType
+from enum import Enum
 
 from pydantic import Field
 
 from pycountries.base import UnitBase
+
+try:
+    from enum import EnumType
+except ImportError:
+    from enum import EnumMeta as EnumType
 
 
 class CountryUnit(UnitBase):
