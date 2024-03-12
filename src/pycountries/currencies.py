@@ -1,5 +1,6 @@
+from __future__ import annotations
+
 from enum import Enum
-from functools import cache
 
 from pydantic import Field
 
@@ -9,6 +10,20 @@ try:
     from enum import EnumType
 except ImportError:
     from enum import EnumMeta as EnumType
+
+try:
+    from functools import cache
+except ImportError:
+    from functools import lru_cache
+
+    def cache(  # type: ignore[misc]
+        user_function,
+        /,
+    ):
+        """
+        https://github.com/python/cpython/commit/21cdb711e3b1975398c54141e519ead02670610e
+        """
+        return lru_cache(maxsize=None)(user_function)
 
 
 class CurrencyUnit(UnitBase):
