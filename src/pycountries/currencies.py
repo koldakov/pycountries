@@ -25,7 +25,7 @@ def _get_currencies_by_digits(
     currency_list = []
     _members = Currency.__members__.values()  # type: ignore
     unit: CurrencyUnit
-    for unit in _members:  # type: ignore
+    for unit in _members:  # type: ignore[assignment]
         if unit.digits == digits:
             currency_list.append(unit)
     return currency_list
@@ -33,7 +33,7 @@ def _get_currencies_by_digits(
 
 class _CurrencyEnumType(EnumType):
     def __call__(cls, value, *args, **kw):  # noqa: N805
-        _members = cls.__members__.values()  # type: ignore
+        _members = cls.__members__.values()  # type: ignore[var-annotated]
         unit: CurrencyUnit
         for unit in _members:
             if value in [

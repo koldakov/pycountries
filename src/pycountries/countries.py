@@ -19,7 +19,7 @@ class CountryUnit(UnitBase):
 
 class _CountryEnumType(EnumType):
     def __call__(cls, value, *args, **kw):  # noqa: N805
-        _members = cls.__members__.values()  # type: ignore
+        _members = cls.__members__.values()  # type: ignore[var-annotated]
         unit: CountryUnit
         for unit in _members:
             if value in [
