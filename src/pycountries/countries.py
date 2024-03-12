@@ -2,7 +2,7 @@ from enum import Enum
 
 from pydantic import Field
 
-from pycountries.base import UnitBase
+from pycountries._base import UnitBase
 
 try:
     from enum import EnumType
