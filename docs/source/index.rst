@@ -24,7 +24,7 @@ Welcome to pycountries's documentation!
    :target: https://pycountries.readthedocs.io/en/latest
 
 .. note::
-   Required ``python 3.11+``
+   Required ``python 3.9+``
 
 Indices and tables
 ==================

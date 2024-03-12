@@ -1,11 +1,11 @@
 [project]
 name = "pycountries"
-version = "0.0.10"
+version = "0.0.11"
 authors = [
   { name="Ivan Koldakov", email="ivan@koldakov.com" },
 ]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
