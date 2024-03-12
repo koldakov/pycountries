@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.13] - 2024-03-12
+
+### Added
+
+- Initial project structure documentation.
+
 ## [0.0.12] - 2024-03-12
 
 ### Added
@@ -51,6 +57,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Base Country Model.
 - Base Currency Model.
 
+[0.0.13]: https://github.com/AivGitHub/pycountries/releases/tag/0.0.13
 [0.0.12]: https://github.com/AivGitHub/pycountries/releases/tag/0.0.12
 [0.0.11]: https://github.com/AivGitHub/pycountries/releases/tag/0.0.11
 [0.0.10]: https://github.com/AivGitHub/pycountries/releases/tag/0.0.10

@@ -26,6 +26,11 @@ Welcome to pycountries's documentation!
 .. note::
    Required ``python 3.8+``
 
+Contents
+--------
+.. toctree::
+   modules
+
 Indices and tables
 ==================
 
