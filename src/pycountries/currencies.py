@@ -23,7 +23,7 @@ def _get_currencies_by_digits(
     /,
 ) -> list[CurrencyUnit]:
     currency_list = []
-    _members = Currency.__members__.values()  # type: ignore
+    _members = Currency.__members__.values()
     unit: CurrencyUnit
     for unit in _members:  # type: ignore[assignment]
         if unit.digits == digits:
