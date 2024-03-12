@@ -39,6 +39,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Base Country Model.
 - Base Currency Model.
 
+[0.0.10]: https://github.com/AivGitHub/pycountries/releases/tag/0.0.10
+[0.0.9]: https://github.com/AivGitHub/pycountries/releases/tag/0.0.9
 [0.0.8]: https://github.com/AivGitHub/pycountries/releases/tag/0.0.8
 [0.0.7]: https://github.com/AivGitHub/pycountries/releases/tag/0.0.7
 [0.0.6]: https://github.com/AivGitHub/pycountries/releases/tag/0.0.6
