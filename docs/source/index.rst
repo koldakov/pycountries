@@ -18,7 +18,7 @@ Welcome to pycountries's documentation!
    :target: https://pypi.org/project/pycountries/
 .. image:: https://img.shields.io/pypi/l/pycountries?logo=open-source-initiative&logoColor=white
    :alt: PyPI - License
-   :target: https://github.com/AivGitHub/pycountries/blob/main/LICENSE.md
+   :target: https://github.com/koldakov/pycountries/blob/main/LICENSE.md
 .. image:: https://img.shields.io/readthedocs/pycountries?logo=readthedocs&logoColor=white
    :alt: Read the Docs
    :target: https://pycountries.readthedocs.io/en/latest

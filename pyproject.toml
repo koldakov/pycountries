@@ -1,6 +1,6 @@
 [project]
 name = "pycountries"
-version = "0.0.14"
+version = "0.0.15"
 authors = [
   { name="Ivan Koldakov", email="ivan@koldakov.com" },
 ]
@@ -23,8 +23,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/AivGitHub/pycountries"
-Issues = "https://github.com/AivGitHub/pycountries/issues"
+Homepage = "https://github.com/koldakov/pycountries"
+Issues = "https://github.com/koldakov/pycountries/issues"
 
 [build-system]
 requires = [
