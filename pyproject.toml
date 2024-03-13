@@ -1,6 +1,6 @@
 [project]
 name = "pycountries"
-version = "0.0.13"
+version = "0.0.14"
 authors = [
   { name="Ivan Koldakov", email="ivan@koldakov.com" },
 ]
@@ -19,7 +19,7 @@ keywords = [
     "currencies",
 ]
 dependencies = [
-  "pydantic>=2.6.3",
+  "pydantic>=1.5",
 ]
 
 [project.urls]
