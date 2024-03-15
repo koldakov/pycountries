@@ -9,11 +9,6 @@ from pydantic import Field
 from pycountries._base import EnumTypeBase, UnitBase
 
 try:
-    from enum import EnumType
-except ImportError:
-    from enum import EnumMeta as EnumType
-
-try:
     from functools import cache
 except ImportError:
     from functools import lru_cache
