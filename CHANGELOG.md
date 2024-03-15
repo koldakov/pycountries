@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.16] - 2024-03-15
+
+### Added
+
+- Official country names to countries.
+- Amount cleansing functionality.
+
 ## [0.0.15] - 2024-03-13
 
 ### Updated
