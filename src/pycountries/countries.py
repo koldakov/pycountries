@@ -2,7 +2,7 @@ from enum import Enum
 
 from pydantic import Field
 
-from pycountries._base import UnitBase
+from pycountries._base import EnumTypeBase, UnitBase
 
 try:
     from enum import EnumType
@@ -18,7 +18,7 @@ class CountryUnit(UnitBase):
     official_name: str
 
 
-class _CountryEnumType(EnumType):
+class _CountryEnumType(EnumTypeBase):
     def __call__(cls, value, *args, **kw):  # noqa: N805
         _members = cls.__members__.values()  # type: ignore[var-annotated]
         unit: CountryUnit
@@ -30,12 +30,6 @@ class _CountryEnumType(EnumType):
             ]:
                 return unit
         raise ValueError(f'"{value}" is not a valid {cls.__qualname__}') from None
-
-    def __getitem__(cls, name):  # noqa: N805
-        try:
-            return super().__getitem__(name)
-        except KeyError as err:
-            raise ValueError(f'"{name}" is not a valid {cls.__qualname__}') from err
 
 
 class Country(Enum, metaclass=_CountryEnumType):

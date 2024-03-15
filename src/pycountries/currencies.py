@@ -6,7 +6,7 @@ from functools import singledispatchmethod
 
 from pydantic import Field
 
-from pycountries._base import UnitBase
+from pycountries._base import EnumTypeBase, UnitBase
 
 try:
     from enum import EnumType
@@ -48,7 +48,7 @@ def _get_currencies_by_digits(
     return currency_list
 
 
-class _CurrencyEnumType(EnumType):
+class _CurrencyEnumType(EnumTypeBase):
     def __call__(cls, value, *args, **kw):  # noqa: N805
         _members = cls.__members__.values()  # type: ignore[var-annotated]
         unit: CurrencyUnit
@@ -59,12 +59,6 @@ class _CurrencyEnumType(EnumType):
             ]:
                 return unit
         raise ValueError(f'"{value}" is not a valid {cls.__qualname__}') from None
-
-    def __getitem__(cls, name):  # noqa: N805
-        try:
-            return super().__getitem__(name)
-        except KeyError as err:
-            raise ValueError(f'"{name}" is not a valid {cls.__qualname__}') from err
 
     @property
     def zero_digits(cls) -> list[CurrencyUnit]:  # noqa: N805
