@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+from decimal import Decimal
 from enum import Enum
+from functools import singledispatchmethod
 
 from pydantic import Field
 
@@ -87,6 +89,30 @@ class _CurrencyEnumType(EnumType):
             ISO 4217 currencies with three digits (decimals).
         """
         return _get_currencies_by_digits(3)
+
+
+class BaseCurrencyError(Exception):
+    """Base Currency Error."""
+
+
+class WrongAmountTypeError(BaseCurrencyError):
+    """Wrong Amount Type Error"""
+
+
+class NegativeAmountNotAllowedError(BaseCurrencyError):
+    """Negative Amount Not Allowed Error"""
+
+
+class ZeroAmountNotAllowedError(BaseCurrencyError):
+    """Zero Amount Not Allowed Error"""
+
+
+class AmountSpecialValuesNotAllowedError(BaseCurrencyError):
+    """Amount Special Values Not Allowed Error."""
+
+
+class WrongAmountDigitsNumberError(BaseCurrencyError):
+    """Wrong Amount Digits Number Error."""
 
 
 class Currency(Enum, metaclass=_CurrencyEnumType):
@@ -1064,3 +1090,113 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
             ISO 4217 decimal.
         """
         return self.unit.digits
+
+    @classmethod
+    def _clean_decimal(cls, amount: Decimal, digits: int, missing_digits_number: int, /) -> Decimal:
+        separator: str = ""
+        if digits == 0:
+            separator = "."
+        if missing_digits_number == 0:
+            return amount
+
+        return Decimal(f'{amount!s}{separator}{missing_digits_number * "0"}')
+
+    @singledispatchmethod
+    def _get_exponent(self, exponent: str | int) -> int:
+        raise NotImplementedError() from None
+
+    @_get_exponent.register
+    def _(self, exponent: str) -> int:
+        raise ValueError() from None
+
+    @_get_exponent.register
+    def _(self, exponent: int) -> int:
+        return abs(exponent)
+
+    def _fix_missing_digits(self, amount: Decimal, exponent: int, /) -> Decimal:
+        missing_digits_amount: int = self.digits - exponent
+        return self._clean_decimal(amount, exponent, missing_digits_amount)
+
+    def clean_amount(self, amount: Decimal, /, *, allow_zero: bool = True) -> Decimal:
+        """Cleans the given ``amount`` based on the ``self.unit.digits`` decimal precision.
+
+        Keep in mind ``amount`` must be with fixed point, otherwise, the behaviour unpredictable.
+        Why we support only fixed points? Because pydantic by default uses this representation and for
+        payments always better to use fixed points.
+
+        >>> from decimal import Decimal
+        >>> from pycountries.currencies import (
+        >>>     AmountSpecialValuesNotAllowedError,
+        >>>     NegativeAmountNotAllowedError,
+        >>>     WrongAmountDigitsNumberError,
+        >>>     WrongAmountTypeError,
+        >>>     ZeroAmountNotAllowedError,
+        >>> )
+        >>>
+        >>> correct_amount = Decimal("12")
+        >>> Currency.BIF.clean_amount(correct_amount)  # BIF has 0 digits
+        >>> Decimal("12")
+        >>>
+        >>> wrong_special_amount = Decimal("inf")
+        >>> try:
+        >>>     Currency.BIF.clean_amount(wrong_special_amount)
+        >>> except AmountSpecialValuesNotAllowedError:
+        >>>     print("Amount Special Values Not Allowed")
+        >>>
+        >>> negative_amount = Decimal("-20.22")
+        >>> try:
+        >>>     Currency.BIF.clean_amount(negative_amount)
+        >>> except NegativeAmountNotAllowedError:
+        >>>     print("Negative Amount Not Allowed")
+        >>>
+        >>> wrong_digits_amount = Decimal("12.3")
+        >>> try:
+        >>>     Currency.BIF.clean_amount(wrong_digits_amount)
+        >>> except WrongAmountDigitsNumberError:
+        >>>     print("Wrong Amount Digits Number")
+        >>>
+        >>> wrong_type_amount = 22
+        >>> try:
+        >>>     Currency.BIF.clean_amount(wrong_type_amount)
+        >>> except WrongAmountTypeError:
+        >>>     print("Wrong Amount Type")
+        >>>
+        >>> wrong_type_amount = Decimal("0.000")
+        >>> try:
+        >>>     Currency.BIF.clean_amount(wrong_type_amount)
+        >>> except ZeroAmountNotAllowedError:
+        >>>     print("Zero Amount Not Allowed")
+        >>>
+        >>> correct_amount_missing_digits = Decimal("12.3")
+        >>> Currency.USD.clean_amount(correct_amount_missing_digits)  # USD has 2 digits
+        >>> Decimal("12.30")
+
+        Args:
+            amount (decimal.Decimal): The amount to clean. Please pass only fixed point representation.x
+            allow_zero (bool): If False only non-zero values are allowed.
+
+        Returns:
+            decimal.Decimal: The cleaned amount with the appropriate precision.
+
+        Raises:
+            pycountries.WrongAmountTypeError: If ``amount`` has not allowed type.
+            pycountries.NegativeAmountNotAllowedError: If ``amount`` is negative.
+            pycountries.ZeroAmountNotAllowedError: If ``amount`` is zero when ``allow_zero`` is False.
+            pycountries.AmountSpecialValuesNotAllowedError: If ``amount`` is infinite or NaN.
+            pycountries.WrongAmountDigitsNumberError: If ``amount`` has more digites than currency can have.
+        """
+        if not isinstance(amount, Decimal):
+            raise WrongAmountTypeError() from None
+        if amount.is_signed():
+            raise NegativeAmountNotAllowedError() from None
+        if not allow_zero and amount.is_zero():
+            raise ZeroAmountNotAllowedError() from None
+        try:
+            exponent: int = self._get_exponent(amount.as_tuple().exponent)
+        except ValueError:
+            raise AmountSpecialValuesNotAllowedError() from None
+        if exponent > self.digits:
+            raise WrongAmountDigitsNumberError() from None
+        else:
+            amount = self._fix_missing_digits(amount, exponent)
+        return amount
