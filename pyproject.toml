@@ -1,6 +1,6 @@
 [project]
 name = "pycountries"
-version = "0.0.17"
+version = "0.0.18"
 authors = [
   { name="Ivan Koldakov", email="ivan@koldakov.com" },
 ]
