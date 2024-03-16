@@ -36,7 +36,7 @@ jobs:
 
     - name: Pytest
       run: |
-        PYTHONPATH=src pytest
+        pytest
 
     - name: Build & Install test
       run: |

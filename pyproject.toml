@@ -151,3 +151,11 @@ check_untyped_defs = true
 files = [
     "src",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "src",
+]
+testpaths = [
+    "tests",
+]
