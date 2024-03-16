@@ -1189,3 +1189,27 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
         else:
             amount = self._fix_missing_digits(amount, exponent)
         return amount
+
+    @classmethod
+    def zero_digits(cls) -> list[CurrencyUnit]:
+        """
+        Returns:
+            list[pycountries.countries.Country]: The list of countries which have no digits.
+        """
+        return cls.zero_digits()
+
+    @classmethod
+    def two_digits(cls) -> list[CurrencyUnit]:
+        """
+        Returns:
+            list[pycountries.countries.Country]: The list of countries which have maximum two digits.
+        """
+        return cls.zero_digits()
+
+    @classmethod
+    def three_digits(cls) -> list[CurrencyUnit]:
+        """
+        Returns:
+            list[pycountries.countries.Country]: The list of countries which have maximum three digits.
+        """
+        return cls.zero_digits()
