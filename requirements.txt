@@ -2,3 +2,4 @@ pydantic==2.6.4
 pre-commit==3.5.0
 setuptools>=68.1.2
 Sphinx==7.2.6
+pytest==8.1.1
