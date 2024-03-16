@@ -10,6 +10,67 @@ Python country and currency enum.
 
 1. Python >= 3.8
 
+## Installation
+
+```bash
+pip install pycountries
+```
+
+## Usage
+
+Examples show how to use pycountries with pydantic + fastapi, but
+you can use it with pydantic and any other libraries.
+
+```bash
+pip install fastapi
+pip install pycountries
+```
+
+When you have all required libraries you can quickstart with this code:
+
+```python
+from decimal import Decimal
+
+from fastapi import FastAPI
+from pycountries import Country, Currency
+from pydantic import BaseModel, model_validator
+
+
+app = FastAPI()
+
+
+class IndexRequest(BaseModel):
+    country: Country
+    currency: Currency
+    amount: Decimal
+
+    @model_validator(mode="after")
+    def validate_amount(self) -> "IndexRequest":
+        # TODO: Keep in you need to handle exceptions raised by clean_amount method,
+        #  otherwise Internal Server Error will be raised.
+        self.amount = self.currency.clean_amount(self.amount)
+        return self
+
+
+class IndexResponse(BaseModel):
+    amount: Decimal
+
+
+
+@app.post("/")
+async def root(data: IndexRequest):
+    return IndexResponse(**data.model_dump())
+```
+
+### Request Examples
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"country":"US", "currency":"USD", "amount":"20.20"}' http://127.0.0.1:8000
+{"amount":"20.20"}
+curl -X POST -H "Content-Type: application/json" -d '{"country":"US", "currency":"USD", "amount":"-20.20"}' http://127.0.0.1:8000
+Internal Server Error
+```
+
 ## Development
 
 ## Contributing
