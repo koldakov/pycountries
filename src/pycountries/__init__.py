@@ -8,7 +8,7 @@ from pycountries.currencies import (
     ZeroAmountNotAllowedError,
 )
 
-__version__ = "0.0.16"
+__version__ = "0.0.17"
 __author__ = "Ivan Koldakov"
 __all__ = [
     "AmountSpecialValuesNotAllowedError",

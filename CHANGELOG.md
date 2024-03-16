@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.17] - 2024-03-16
+
+### Improved
+
+- Code stability.
+
 ## [0.0.16] - 2024-03-15
 
 ### Added
@@ -76,6 +82,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Base Country Model.
 - Base Currency Model.
 
+[0.0.17]: https://github.com/koldakov/pycountries/releases/tag/0.0.17
+[0.0.16]: https://github.com/koldakov/pycountries/releases/tag/0.0.16
 [0.0.15]: https://github.com/koldakov/pycountries/releases/tag/0.0.15
 [0.0.14]: https://github.com/koldakov/pycountries/releases/tag/0.0.14
 [0.0.13]: https://github.com/koldakov/pycountries/releases/tag/0.0.13
