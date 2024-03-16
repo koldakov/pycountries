@@ -118,7 +118,7 @@ pip install -r requirements.txt
 
 ## License
 
-Distributed under the Apache 2.0 License. See [LICENSE.md](LICENSE.md) for more information.
+Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
