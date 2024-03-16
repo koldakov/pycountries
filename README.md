@@ -4,7 +4,13 @@
 [![PyPI - License](https://img.shields.io/pypi/l/pycountries?logo=open-source-initiative&logoColor=white)](https://github.com/AivGitHub/pycountries/blob/main/LICENSE.md)
 [![docs](https://img.shields.io/readthedocs/pycountries?logo=readthedocs&logoColor=white)][documentation]
 
-Python country and currency enum.
+pycountries provides the ISO enums for the standards:
+
+- [iso-4217](https://www.iso.org/iso-4217-currency-codes.html)
+- [iso-3166](https://www.iso.org/iso-3166-country-codes.html)
+
+pycountries can be used natively with pydantic >= 1.5 and python >= 3.8.
+It makes really easy to use fastapi and other related libraries.
 
 ## Requirements
 
@@ -71,7 +77,20 @@ curl -X POST -H "Content-Type: application/json" -d '{"country":"US", "currency"
 Internal Server Error
 ```
 
+## Motivation
+
+There is a great library [pycountry](https://github.com/pycountry/pycountry), but it is incompatible with enums,
+for sure enums can be generated dynamically, but python does not work good with dynamic enums, for example, you can not
+inherit from enums, annotations will be broken, etc. pycountries solves these issues and more.
+Soon pycountries will be providing other ISO standards related to countries.
+
 ## Development
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
 ## Contributing
 
