@@ -2,25 +2,11 @@ from __future__ import annotations
 
 from decimal import Decimal
 from enum import Enum
-from functools import singledispatchmethod
+from functools import lru_cache, singledispatchmethod
 
 from pydantic import Field
 
 from pycountries._base import EnumTypeBase, UnitBase
-
-try:
-    from functools import cache
-except ImportError:
-    from functools import lru_cache
-
-    def cache(  # type: ignore[misc]
-        user_function,
-        /,
-    ):
-        """
-        https://github.com/python/cpython/commit/21cdb711e3b1975398c54141e519ead02670610e
-        """
-        return lru_cache(maxsize=None)(user_function)
 
 
 class CurrencyUnit(UnitBase):
@@ -29,7 +15,7 @@ class CurrencyUnit(UnitBase):
     )
 
 
-@cache
+@lru_cache(maxsize=3)
 def _get_currencies_by_digits(
     digits: int,
     /,
