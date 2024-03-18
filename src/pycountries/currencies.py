@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from decimal import Decimal
 from enum import Enum
-from functools import singledispatchmethod
+from functools import lru_cache, singledispatchmethod
 
 from pydantic import Field
 
@@ -29,7 +29,7 @@ class CurrencyUnit(UnitBase):
     )
 
 
-@cache
+@lru_cache(maxsize=3)
 def _get_currencies_by_digits(
     digits: int,
     /,
