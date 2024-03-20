@@ -9,7 +9,7 @@ from pycountries.currencies import (
 )
 from pycountries.phones import Mobile
 
-__version__ = "0.0.18"
+__version__ = "0.0.19"
 __author__ = "Ivan Koldakov"
 __all__ = [
     "AmountSpecialValuesNotAllowedError",

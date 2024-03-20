@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.19] - 2024-03-20
+
+### Added
+
+- Mobile phone enum.
+
+### Improved
+
+- Code base.
+
 ## [0.0.18] - 2024-03-16
 
 ### Improved
@@ -88,6 +98,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Base Country Model.
 - Base Currency Model.
 
+[0.0.19]: https://github.com/koldakov/pycountries/releases/tag/0.0.19
 [0.0.18]: https://github.com/koldakov/pycountries/releases/tag/0.0.18
 [0.0.17]: https://github.com/koldakov/pycountries/releases/tag/0.0.17
 [0.0.16]: https://github.com/koldakov/pycountries/releases/tag/0.0.16
