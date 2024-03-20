@@ -19,11 +19,3 @@ pycountries.currencies module
    :members:
    :undoc-members:
    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: pycountries
-   :members:
-   :undoc-members:
-   :show-inheritance:
