@@ -19,30 +19,30 @@ class CurrencyUnit(UnitBase):
 def _get_currencies_by_digits(
     digits: int,
     /,
-) -> list[CurrencyUnit]:
+) -> list[Currency]:
     currency_list = []
     _members = Currency.__members__.values()
-    unit: CurrencyUnit
-    for unit in _members:  # type: ignore[assignment]
-        if unit.digits == digits:
-            currency_list.append(unit)
+    currency: Currency
+    for currency in _members:
+        if currency.digits == digits:
+            currency_list.append(currency)
     return currency_list
 
 
 class _CurrencyEnumType(EnumTypeBase):
     def __call__(cls, value, *args, **kw):  # noqa: N805
         _members = cls.__members__.values()  # type: ignore[var-annotated]
-        unit: CurrencyUnit
-        for unit in _members:
+        currency: Currency
+        for currency in _members:
             if value in [
-                unit.alpha_3,
-                unit.numeric,
+                currency.alpha_3,
+                currency.numeric,
             ]:
-                return unit
+                return currency
         raise ValueError(f'"{value}" is not a valid {cls.__qualname__}') from None
 
     @property
-    def zero_digits(cls) -> list[CurrencyUnit]:  # noqa: N805
+    def zero_digits(cls) -> list[Currency]:  # noqa: N805
         """
         Returns:
             ISO 4217 currencies with no digits (decimals).
@@ -50,7 +50,7 @@ class _CurrencyEnumType(EnumTypeBase):
         return _get_currencies_by_digits(0)
 
     @property
-    def two_digits(cls) -> list[CurrencyUnit]:  # noqa: N805
+    def two_digits(cls) -> list[Currency]:  # noqa: N805
         """
         Returns:
             ISO 4217 currencies with two digits (decimals).
@@ -58,7 +58,7 @@ class _CurrencyEnumType(EnumTypeBase):
         return _get_currencies_by_digits(2)
 
     @property
-    def three_digits(cls) -> list[CurrencyUnit]:  # noqa: N805
+    def three_digits(cls) -> list[Currency]:  # noqa: N805
         """
         Returns:
             ISO 4217 currencies with three digits (decimals).
@@ -1022,7 +1022,7 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
     def unit(self) -> CurrencyUnit:
         """
         Returns:
-            ``pycountries.currencies.CountryUnit``.
+            ``pycountries.currencies.CurrencyUnit``.
         """
         return self._value_
 
@@ -1177,25 +1177,25 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
         return amount
 
     @classmethod
-    def zero_digits(cls) -> list[CurrencyUnit]:
+    def zero_digits(cls) -> list[Currency]:
         """
         Returns:
-            list[pycountries.countries.Country]: The list of countries which have no digits.
+            list[pycountries.currencies.Currency]: The list of currencies which have no digits.
         """
         return cls.zero_digits()
 
     @classmethod
-    def two_digits(cls) -> list[CurrencyUnit]:
+    def two_digits(cls) -> list[Currency]:
         """
         Returns:
-            list[pycountries.countries.Country]: The list of countries which have maximum two digits.
+            list[pycountries.currencies.Currency]: The list of currencies which have maximum two digits.
         """
         return cls.zero_digits()
 
     @classmethod
-    def three_digits(cls) -> list[CurrencyUnit]:
+    def three_digits(cls) -> list[Currency]:
         """
         Returns:
-            list[pycountries.countries.Country]: The list of countries which have maximum three digits.
+            list[pycountries.currencies.Currency]: The list of currencies which have maximum three digits.
         """
         return cls.zero_digits()
