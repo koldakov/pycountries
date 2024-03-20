@@ -16,14 +16,14 @@ class CountryUnit(UnitBase):
 class _CountryEnumType(EnumTypeBase):
     def __call__(cls, value, *args, **kw):  # noqa: N805
         _members = cls.__members__.values()  # type: ignore[var-annotated]
-        unit: CountryUnit
-        for unit in _members:
+        country: Country
+        for country in _members:
             if value in [
-                unit.alpha_2,
-                unit.alpha_3,
-                unit.numeric,
+                country.alpha_2,
+                country.alpha_3,
+                country.numeric,
             ]:
-                return unit
+                return country
         raise ValueError(f'"{value}" is not a valid {cls.__qualname__}') from None
 
 
