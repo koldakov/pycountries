@@ -77,6 +77,37 @@ curl -X POST -H "Content-Type: application/json" -d '{"country":"US", "currency"
 Internal Server Error
 ```
 
+### Mobile phones
+
+I'm still not sure about the logic, if you have any ideas please create a task
+[here](https://github.com/koldakov/pycountries/issues).
+
+The problem here is that calling code is not unique per country. For example,
+at least 3 countries have code +1: United States, Canada, Barbados. To determine the country
+we need to see a prefix - N numbers after country code. And, looks like these prefixes are quite
+dynamic, so should be managed accordingly.
+
+For now logic is:
+1. Return first calling code match if prefix is not provided.
+2. If prefix is provided return first prefix match, or first "candidate" if there are no exact prefix matches.
+
+It is very useful if you want to show mobile dynamically. See an example below for more info.
+
+```python
+from pycountries import Mobile
+
+# Return first match with different types
+Mobile(1)  # Mobile.BB
+Mobile("1")  # Mobile.BB
+Mobile("+1")  # Mobile.BB
+
+# Result has changed, because results with prefixes in priority right now.
+Mobile(1, prefix=3)  # Mobile.UM
+Mobile(1, prefix=32)  # Mobile.UM
+# Exact match found!
+Mobile(1, prefix=325)  # Mobile.US
+```
+
 ## Motivation
 
 There is a great library [pycountry](https://github.com/pycountry/pycountry), but it is incompatible with enums,
