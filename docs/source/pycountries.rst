@@ -19,3 +19,11 @@ pycountries.currencies module
    :members:
    :undoc-members:
    :show-inheritance:
+
+pycountries.phones module
+-------------------------
+
+.. automodule:: pycountries.phones
+   :members:
+   :undoc-members:
+   :show-inheritance:
