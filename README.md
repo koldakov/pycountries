@@ -77,7 +77,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"country":"US", "currency"
 Internal Server Error
 ```
 
-### Mobile phones
+### Phones
 
 I'm still not sure about the logic, if you have any ideas please create a task
 [here](https://github.com/koldakov/pycountries/issues).
@@ -91,21 +91,21 @@ For now logic is:
 1. Return first calling code match if prefix is not provided.
 2. If prefix is provided return first prefix match, or first "candidate" if there are no exact prefix matches.
 
-It is very useful if you want to show mobile dynamically. See an example below for more info.
+It is very useful if you want to show phone dynamically. See an example below for more info.
 
 ```python
-from pycountries import Mobile
+from pycountries import Phone
 
 # Return first match with different types
-Mobile(1)  # Mobile.BB
-Mobile("1")  # Mobile.BB
-Mobile("+1")  # Mobile.BB
+Phone(1)  # Phone.BB
+Phone("1")  # Phone.BB
+Phone("+1")  # Phone.BB
 
 # Result has changed, because results with prefixes in priority right now.
-Mobile(1, prefix=3)  # Mobile.UM
-Mobile(1, prefix=32)  # Mobile.UM
+Phone(1, prefix=3)  # Phone.UM
+Phone(1, prefix=32)  # Phone.UM
 # Exact match found!
-Mobile(1, prefix=325)  # Mobile.US
+Phone(1, prefix=325)  # Phone.US
 ```
 
 ## Motivation

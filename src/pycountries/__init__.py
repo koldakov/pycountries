@@ -7,7 +7,7 @@ from pycountries.currencies import (
     WrongAmountTypeError,
     ZeroAmountNotAllowedError,
 )
-from pycountries.phones import Mobile
+from pycountries.phones import Phone
 
 __version__ = "0.0.19"
 __author__ = "Ivan Koldakov"
@@ -15,8 +15,8 @@ __all__ = [
     "AmountSpecialValuesNotAllowedError",
     "Country",
     "Currency",
-    "Mobile",
     "NegativeAmountNotAllowedError",
+    "Phone",
     "WrongAmountDigitsNumberError",
     "WrongAmountTypeError",
     "ZeroAmountNotAllowedError",
