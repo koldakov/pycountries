@@ -177,3 +177,7 @@ Best regards,
 
 [pypi_proj]: https://pypi.org/project/pycountries/
 [documentation]: https://pycountries.readthedocs.io
+
+## Visitor counter
+
+<img src="https://profile-counter.glitch.me/pycountries/count.svg" />
