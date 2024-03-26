@@ -8,6 +8,8 @@ pycountries provides the ISO enums for the standards:
 
 - [iso-4217](https://www.iso.org/iso-4217-currency-codes.html)
 - [iso-3166](https://www.iso.org/iso-3166-country-codes.html)
+- [iso-3166](https://www.iso.org/iso-3166-country-codes.html)
+- [iso-639](https://www.iso.org/iso-639-language-code)
 
 pycountries can be used natively with pydantic >= 1.5 and python >= 3.8.
 It makes really easy to use fastapi and other related libraries.
@@ -38,7 +40,7 @@ When you have all required libraries you can quickstart with this code:
 from decimal import Decimal
 
 from fastapi import FastAPI
-from pycountries import Country, Currency
+from pycountries import Country, Currency, Language
 from pydantic import BaseModel, model_validator
 
 
@@ -49,6 +51,7 @@ class IndexRequest(BaseModel):
     country: Country
     currency: Currency
     amount: Decimal
+    language: Language
 
     @model_validator(mode="after")
     def validate_amount(self) -> "IndexRequest":
@@ -71,9 +74,9 @@ async def root(data: IndexRequest):
 ### Request Examples
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"country":"US", "currency":"USD", "amount":"20.20"}' http://127.0.0.1:8000
+curl -X POST -H "Content-Type: application/json" -d '{"country":"US", "currency":"USD", "amount":"20.20", "language":"eng"}' http://127.0.0.1:8000
 {"amount":"20.20"}
-curl -X POST -H "Content-Type: application/json" -d '{"country":"US", "currency":"USD", "amount":"-20.20"}' http://127.0.0.1:8000
+curl -X POST -H "Content-Type: application/json" -d '{"country":"US", "currency":"USD", "amount":"-20.20", "language":"eng"}' http://127.0.0.1:8000
 Internal Server Error
 ```
 
