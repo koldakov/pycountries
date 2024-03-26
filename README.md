@@ -8,7 +8,6 @@ pycountries provides the ISO enums for the standards:
 
 - [iso-4217](https://www.iso.org/iso-4217-currency-codes.html)
 - [iso-3166](https://www.iso.org/iso-3166-country-codes.html)
-- [iso-3166](https://www.iso.org/iso-3166-country-codes.html)
 - [iso-639](https://www.iso.org/iso-639-language-code)
 
 pycountries can be used natively with pydantic >= 1.5 and python >= 3.8.
