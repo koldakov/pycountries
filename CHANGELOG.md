@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.21] - 2024-03-26
+
+### Added
+
+- ISO 639 Languages.
+
 ## [0.0.20] - 2024-03-21
 
 ### Changed
@@ -104,6 +110,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Base Country Model.
 - Base Currency Model.
 
+[0.0.21]: https://github.com/koldakov/pycountries/releases/tag/0.0.21
 [0.0.20]: https://github.com/koldakov/pycountries/releases/tag/0.0.20
 [0.0.19]: https://github.com/koldakov/pycountries/releases/tag/0.0.19
 [0.0.18]: https://github.com/koldakov/pycountries/releases/tag/0.0.18
