@@ -27,3 +27,11 @@ pycountries.phones module
    :members:
    :undoc-members:
    :show-inheritance:
+
+pycountries.languages module
+-------------------------
+
+.. automodule:: pycountries.languages
+   :members:
+   :undoc-members:
+   :show-inheritance:
