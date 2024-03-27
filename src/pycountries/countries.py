@@ -9,8 +9,57 @@ class CountryUnit(UnitBase):
     alpha_2: str = Field(
         min_length=2,
         max_length=2,
+        description="A two-letter country code assigned to each country or territory in the ISO 3166-1 standard. "
+        "These codes are used as part of domain names, vehicle registration plates, and in international "
+        "transactions, among other purposes.",
+        examples=[
+            "US",
+            "MT",
+            "RU",
+        ],
     )
-    official_name: str
+    alpha_3: str = Field(
+        min_length=3,
+        max_length=3,
+        description="A three-letter country code assigned to each country or territory in the ISO 3166-1 standard. "
+        "These codes are commonly used in various international contexts, "
+        "including identifying countries in internet domains, representing countries in airline "
+        "ticketing, and facilitating international trade.",
+        examples=[
+            "USA",
+            "MLT",
+            "RUS",
+        ],
+    )
+    numeric: str = Field(
+        min_length=3,
+        max_length=3,
+        description="A three-digit numeric code assigned to each country or territory in the ISO 3166-1 standard. "
+        "These codes are used in various contexts where numeric representations are preferred over "
+        "alphanumeric ones, such as in databases or systems where numerical identifiers are "
+        "easier to work with.",
+        examples=[
+            "840",
+            "470",
+            "643",
+        ],
+    )
+    official_name: str = Field(
+        description="Official country name,",
+        examples=[
+            "United States of America",
+            "Republic of Malta",
+            "Russian Federation",
+        ],
+    )
+    name: str = Field(
+        description="Country shorten name.",
+        examples=[
+            "United States",
+            "Malta",
+            "Russian Federation",
+        ],
+    )
 
 
 class _CountryEnumType(EnumTypeBase):
@@ -29,8 +78,13 @@ class _CountryEnumType(EnumTypeBase):
 
 class Country(Enum, metaclass=_CountryEnumType):
     """
-    Country Enum, which contains ISO 3166-1 Alpha 2 code, ISO 3166-1 Alpha 3 code,
-    ISO 3166-1 numeric code, ISO 3166 name.
+    Country Enum, a comprehensive collection that incorporates essential identifiers according to the ISO 3166-1
+    standard. It encompasses the ISO 3166-1 Alpha-2 code, which consists of two-letter country codes,
+    the ISO 3166-1 Alpha-3 code, comprising three-letter country codes, and the ISO 3166-1 numeric code,
+    which provides a three-digit numerical representation for each country.
+
+    Additionally, the Country Enum includes the full country names corresponding to these codes, offering a complete
+    reference for identifying and categorizing countries worldwide.
     """
 
     AW = CountryUnit(
@@ -1796,6 +1850,9 @@ class Country(Enum, metaclass=_CountryEnumType):
     @property
     def alpha_2(self):
         """
+        This code is used as part of domain names, vehicle registration plates, and in international
+        transactions, among other purposes.
+
         Returns:
             ISO 3166-1 Alpha 2 code.
         """
@@ -1804,6 +1861,10 @@ class Country(Enum, metaclass=_CountryEnumType):
     @property
     def alpha_3(self):
         """
+        This code is commonly used in various international contexts,
+        including identifying countries in internet domains, representing countries in airline
+        ticketing, and facilitating international trade.
+
         Returns:
             ISO 3166-1 Alpha 3 code.
         """
@@ -1812,6 +1873,10 @@ class Country(Enum, metaclass=_CountryEnumType):
     @property
     def numeric(self):
         """
+        This code is used in various contexts where numeric representations are preferred over
+        alphanumeric ones, such as in databases or systems where numerical identifiers are
+        easier to work with.
+
         Returns:
             ISO 3166-1 numeric code.
         """
@@ -1820,6 +1885,8 @@ class Country(Enum, metaclass=_CountryEnumType):
     @property
     def name(self):
         """
+        Unofficial country name, known as shorten country name.
+
         Returns:
             ISO 3166 name.
         """
@@ -1828,6 +1895,8 @@ class Country(Enum, metaclass=_CountryEnumType):
     @property
     def official_name(self):
         """
+        Official country name.
+
         Returns:
             World Factbook official state name.
         """

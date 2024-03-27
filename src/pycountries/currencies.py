@@ -10,8 +10,48 @@ from pycountries._base import EnumTypeBase, UnitBase
 
 
 class CurrencyUnit(UnitBase):
+    alpha_3: str = Field(
+        min_length=3,
+        max_length=3,
+        description="A three-letter alphabetic code. "
+        "This alphabetic code is used internationally to represent currency in financial "
+        "transaction and data. "
+        "It is standardized by the International Organization for Standardization (ISO) to facilitate "
+        "consistency and clarity in financial communications.",
+        examples=[
+            "USD",
+            "EUR",
+            "RUB",
+        ],
+    )
+    numeric: str = Field(
+        min_length=3,
+        max_length=3,
+        description="Numeric code. Used to represent currency in context where numerical representation "
+        "is preferred over alphabetic ones, such as in databases or systems where numeric identifier "
+        "is easier to work with.",
+        examples=[
+            "840",
+            "978",
+            "643",
+        ],
+    )
     digits: int = Field(
         default=2,
+        description="The maximum number of decimal places that are typically used when dealing with a currency.",
+        examples=[
+            "2",
+            "2",
+            "2",
+        ],
+    )
+    name: str = Field(
+        description="Official title of a currency",
+        examples=[
+            "US Dollar",
+            "Euro",
+            "Russian Ruble",
+        ],
     )
 
 
@@ -91,6 +131,17 @@ class WrongAmountDigitsNumberError(BaseCurrencyError):
 
 
 class Currency(Enum, metaclass=_CurrencyEnumType):
+    """
+    The Currency Enum is a comprehensive collection designed to facilitate currency handling in software applications.
+    It encompasses the ISO 4217 standard, which defines alphabetic and numeric codes for currencies,
+    along with their corresponding full names.
+
+    This Enum provides developers with a structured and standardized way to represent and manage currencies.
+    Whether for financial transactions, currency conversion, or reporting purposes,
+    the Currency Enum offers a reliable reference for accurately identifying and working with currencies across
+    diverse software environments.
+    """
+
     AED = CurrencyUnit(
         alpha_3="AED",
         numeric="784",
@@ -1037,6 +1088,9 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
     @property
     def alpha_3(self):
         """
+        A three-letter alphabetic code.
+        This alphabetic code is used internationally to represent currencies in financial transactions and data.
+
         Returns:
             ISO 4217 code.
         """
@@ -1045,6 +1099,9 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
     @property
     def numeric(self):
         """
+        Numeric code. Preferred over alphabetic ones, such as in databases or systems where numeric identifiers
+        are easier to work with.
+
         Returns:
             ISO 4217 numeric.
         """
@@ -1053,6 +1110,8 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
     @property
     def name(self):
         """
+        The full currency name.
+
         Returns:
             ISO 4217 name.
         """
@@ -1061,6 +1120,11 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
     @property
     def digits(self):
         """
+        Maximum currency digits.
+        The maximum currency digits for many major currencies like the US Dollar (USD), Euro (EUR),
+        and British Pound Sterling (GBP) is 2, meaning that values are typically rounded to two decimal places.
+        However, there are exceptions, such as the Kuwaiti Dinar (KWD), which has a maximum currency digits of 3.
+
         Returns:
             ISO 4217 decimal.
         """

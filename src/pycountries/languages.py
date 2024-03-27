@@ -6,27 +6,56 @@ from pycountries._base import EnumTypeBase
 
 
 class LanguageUnit(BaseModel):
-    name: str
+    name: str = Field(
+        description="Official Language name.",
+        examples=[
+            "English",
+            "French",
+            "Russian",
+        ],
+    )
     alpha_2: str | None = Field(
         default=None,
         min_length=2,
         max_length=2,
-        description="ISO 639-1",
+        description="ISO 639-2 two-letter code to represent language.",
+        examples=[
+            "en",
+            "ru",
+        ],
     )
     alpha_3: str = Field(
         min_length=3,
         max_length=3,
-        description="ISO 639-2",
+        description="ISO 639-2 three-letter code to represent language.",
+        examples=[
+            "eng",
+            "fra",
+            "rus",
+        ],
     )
     bibliographic: str | None = Field(
         min_length=3,
         max_length=3,
-        description="ISO 639-2 bibliographic",
+        description="ISO 639-2 code designated specifically for bibliographic or library cataloging purposes. "
+        "Bibliographic code is used primarily in library systems and databases to categorize and "
+        "organize resources by language.",
+        examples=[
+            None,
+            "fre",
+            None,
+        ],
     )
     terminology: str = Field(
         min_length=3,
         max_length=3,
-        description="ISO 639-2 terminology",
+        description="ISO 639-2 code refers to specific language code designated for terminology or "
+        "specialized vocabulary purposes.",
+        examples=[
+            "eng",
+            "fra",
+            "rus",
+        ],
     )
 
 
@@ -52,8 +81,9 @@ class _LanguageEnumType(EnumTypeBase):
 
 class Language(Enum, metaclass=_LanguageEnumType):
     """
-    Language Enum, which contains ISO 639-1 Alpha 2 code, ISO 639-2 Alpha 3 code.
-    Also, there are languages that have alternative codes for bibliographic or terminology purposes.
+    The Language Enum comprises the ISO 639 standard, encompassing both the two-letter Alpha-2 codes and
+    the three-letter Alpha-3 codes. Additionally, certain languages may have alternative codes designated for
+    bibliographic or terminology purposes.
     """
 
     AAR = LanguageUnit(
