@@ -64,7 +64,6 @@ class IndexResponse(BaseModel):
     amount: Decimal
 
 
-
 @app.post("/")
 async def root(data: IndexRequest):
     return IndexResponse(**data.model_dump())
