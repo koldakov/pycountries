@@ -3647,7 +3647,7 @@ class Language(Enum, metaclass=_LanguageEnumType):
         return self.unit.bibliographic
 
     @property
-    def terminology(self) -> str | None:
+    def terminology(self) -> str:
         """
         Returns:
             ISO 639-2 Alpha 3 terminology code.
