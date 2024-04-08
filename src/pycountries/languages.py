@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+import sys
 from enum import Enum
 
 from pydantic import BaseModel, Field
@@ -5,23 +8,13 @@ from pydantic import BaseModel, Field
 from pycountries._base import EnumTypeBase
 
 
-class LanguageUnit(BaseModel):
+class LanguageUnitBase(BaseModel):
     name: str = Field(
         description="Official Language name.",
         examples=[
             "English",
             "French",
             "Russian",
-        ],
-    )
-    alpha_2: str | None = Field(
-        default=None,
-        min_length=2,
-        max_length=2,
-        description="ISO 639-2 two-letter code to represent language.",
-        examples=[
-            "en",
-            "ru",
         ],
     )
     alpha_3: str = Field(
@@ -32,18 +25,6 @@ class LanguageUnit(BaseModel):
             "eng",
             "fra",
             "rus",
-        ],
-    )
-    bibliographic: str | None = Field(
-        min_length=3,
-        max_length=3,
-        description="ISO 639-2 code designated specifically for bibliographic or library cataloging purposes. "
-        "Bibliographic code is used primarily in library systems and databases to categorize and "
-        "organize resources by language.",
-        examples=[
-            None,
-            "fre",
-            None,
         ],
     )
     terminology: str = Field(
@@ -59,7 +40,60 @@ class LanguageUnit(BaseModel):
     )
 
 
-def _get_compare_list(language: "Language") -> list[str]:
+if sys.version_info >= (3, 9):  # noqa: UP036
+
+    class LanguageUnit(LanguageUnitBase):
+        alpha_2: str | None = Field(
+            default=None,
+            min_length=2,
+            max_length=2,
+            description="ISO 639-2 two-letter code to represent language.",
+            examples=[
+                "en",
+                "ru",
+            ],
+        )
+        bibliographic: str | None = Field(
+            min_length=3,
+            max_length=3,
+            description="ISO 639-2 code designated specifically for bibliographic or library cataloging purposes. "
+            "Bibliographic code is used primarily in library systems and databases to categorize and "
+            "organize resources by language.",
+            examples=[
+                None,
+                "fre",
+                None,
+            ],
+        )
+else:
+    from typing import Optional
+
+    class LanguageUnit(LanguageUnitBase):
+        alpha_2: Optional[str] = Field(  # noqa: UP007
+            default=None,
+            min_length=2,
+            max_length=2,
+            description="ISO 639-2 two-letter code to represent language.",
+            examples=[
+                "en",
+                "ru",
+            ],
+        )
+        bibliographic: Optional[str] = Field(  # noqa: UP007
+            min_length=3,
+            max_length=3,
+            description="ISO 639-2 code designated specifically for bibliographic or library cataloging purposes. "
+            "Bibliographic code is used primarily in library systems and databases to categorize and "
+            "organize resources by language.",
+            examples=[
+                None,
+                "fre",
+                None,
+            ],
+        )
+
+
+def _get_compare_list(language: Language) -> list[str]:
     compare_list: list[str] = [
         language.alpha_3,
     ]

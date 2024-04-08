@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from enum import Enum
 from functools import singledispatchmethod
 from typing import TYPE_CHECKING
@@ -13,17 +14,27 @@ if TYPE_CHECKING:
     from types import MappingProxyType
 
 
-class PhoneUnit(BaseModel):
+class PhoneUnitBase(BaseModel):
     country: Country
     calling_code: int = Field(
         description="International calling code",
     )
-    prefixes: list[int]
 
     def is_prefix_supported(self, prefix: int, /) -> bool:
         if not self.prefixes or prefix is None:
             return True
         return prefix in self.prefixes
+
+
+if sys.version_info >= (3, 9):  # noqa: UP036
+
+    class PhoneUnit(PhoneUnitBase):
+        prefixes: list[int]
+else:
+    from typing import List  # noqa: UP035
+
+    class PhoneUnit(PhoneUnitBase):
+        prefixes: List[int]  # noqa: UP006
 
 
 class _PhoneUnitNotFoundError(Exception):
