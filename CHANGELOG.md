@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2024-04-08
+
+### Fixed
+
+- Python 3.8 and Python 3.9 support.
+
 ## [1.0.0] - 2024-03-27
 
 ### Added
@@ -126,6 +132,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Base Country Model.
 - Base Currency Model.
 
+[1.0.1]: https://github.com/koldakov/pycountries/releases/tag/1.0.1
 [1.0.0]: https://github.com/koldakov/pycountries/releases/tag/1.0.0
 [0.0.22]: https://github.com/koldakov/pycountries/releases/tag/0.0.22
 [0.0.21]: https://github.com/koldakov/pycountries/releases/tag/0.0.21
