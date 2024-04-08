@@ -19,6 +19,7 @@ class PhoneUnitBase(BaseModel):
     calling_code: int = Field(
         description="International calling code",
     )
+    # prefixes: list[int]  # Abstract property
 
     def is_prefix_supported(self, prefix: int, /) -> bool:
         if not self.prefixes or prefix is None:
@@ -26,7 +27,7 @@ class PhoneUnitBase(BaseModel):
         return prefix in self.prefixes
 
 
-if sys.version_info >= (3, 9):  # noqa: UP036
+if sys.version_info >= (3, 10):  # noqa: UP036
 
     class PhoneUnit(PhoneUnitBase):
         prefixes: list[int]

@@ -40,7 +40,7 @@ class LanguageUnitBase(BaseModel):
     )
 
 
-if sys.version_info >= (3, 9):  # noqa: UP036
+if sys.version_info >= (3, 10):  # noqa: UP036
 
     class LanguageUnit(LanguageUnitBase):
         alpha_2: str | None = Field(
