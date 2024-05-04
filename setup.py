@@ -8,6 +8,8 @@ def _get_file(name: str):
 
 
 setup(
+    author="Ivan Koldakov",
+    url="https://github.com/koldakov/pycountries",
     long_description=_get_file("README.md"),
     long_description_content_type="text/markdown",
     package_dir={
