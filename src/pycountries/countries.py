@@ -71,6 +71,7 @@ class _CountryEnumType(EnumTypeBase):
                 country.alpha_2,
                 country.alpha_3,
                 country.numeric,
+                int(country.numeric),
             ]:
                 return country
         raise ValueError(f'"{value}" is not a valid {cls.__qualname__}') from None
