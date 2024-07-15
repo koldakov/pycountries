@@ -77,6 +77,7 @@ class _CurrencyEnumType(EnumTypeBase):
             if value in [
                 currency.alpha_3,
                 currency.numeric,
+                int(currency.numeric),
             ]:
                 return currency
         raise ValueError(f'"{value}" is not a valid {cls.__qualname__}') from None
