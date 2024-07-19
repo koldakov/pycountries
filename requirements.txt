@@ -1,5 +1,5 @@
-pydantic==2.7.2
+pydantic==2.8.2
 pre-commit==3.7.1
-setuptools==70.0.0
-Sphinx==7.3.7
-pytest==8.2.1
+setuptools==71.0.3
+Sphinx==7.4.6
+pytest==8.2.2
