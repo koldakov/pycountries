@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2024-07-19
+
+### Added
+
+- Get Currency and Country by integer numeric.
+
+### Updated
+
+- Requirements.
+
 ## [1.0.3] - 2024-06-02
 
 ### Updated
@@ -144,6 +154,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Base Country Model.
 - Base Currency Model.
 
+[1.1.0]: https://github.com/koldakov/pycountries/releases/tag/1.1.0
 [1.0.3]: https://github.com/koldakov/pycountries/releases/tag/1.0.3
 [1.0.2]: https://github.com/koldakov/pycountries/releases/tag/1.0.2
 [1.0.1]: https://github.com/koldakov/pycountries/releases/tag/1.0.1
