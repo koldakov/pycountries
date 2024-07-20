@@ -56,3 +56,20 @@ class TestCurrencyCleanAmount:
     ):
         amount: Decimal = Decimal("20.2")
         assert str(self.two_digits_currency.clean_amount(amount)) == str(Decimal("20.20"))
+
+
+class TestCurrencyGetByValue:
+    def test_get_by_value_should_return_currency_usd_when_value_is_alpha_3_usd(self):
+        assert Currency("USD") == Currency.USD
+
+    def test_get_by_value_should_return_currency_usd_when_value_is_numeric_str_840(self):
+        assert Currency("840") == Currency.USD
+
+    def test_get_by_value_should_return_currency_usd_when_value_is_numeric_int_840(self):
+        assert Currency(840) == Currency.USD
+
+    def test_get_by_value_should_return_currency_all_when_value_is_numeric_str_008(self):
+        assert Currency("008") == Currency.ALL
+
+    def test_get_by_value_should_return_currency_all_when_value_is_numeric_int_8(self):
+        assert Currency(8) == Currency.ALL
