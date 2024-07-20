@@ -1255,7 +1255,7 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
         Returns:
             list[pycountries.currencies.Currency]: The list of currencies which have maximum two digits.
         """
-        return cls.zero_digits()
+        return cls.two_digits()
 
     @classmethod
     def three_digits(cls) -> list[Currency]:
@@ -1263,4 +1263,4 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
         Returns:
             list[pycountries.currencies.Currency]: The list of currencies which have maximum three digits.
         """
-        return cls.zero_digits()
+        return cls.three_digits()
