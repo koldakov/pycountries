@@ -54,7 +54,7 @@ class IndexRequest(BaseModel):
 
     @model_validator(mode="after")
     def validate_amount(self) -> "IndexRequest":
-        # TODO: Keep in you need to handle exceptions raised by clean_amount method,
+        # TODO: Keep in mind, you need to handle exceptions raised by clean_amount method,
         #  otherwise Internal Server Error will be raised.
         self.amount = self.currency.clean_amount(self.amount)
         return self
