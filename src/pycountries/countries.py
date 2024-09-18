@@ -1849,7 +1849,7 @@ class Country(Enum, metaclass=_CountryEnumType):
         return self.unit.alpha_2
 
     @property
-    def alpha_2(self):
+    def alpha_2(self) -> str:
         """
         This code is used as part of domain names, vehicle registration plates, and in international
         transactions, among other purposes.
@@ -1860,7 +1860,7 @@ class Country(Enum, metaclass=_CountryEnumType):
         return self.unit.alpha_2
 
     @property
-    def alpha_3(self):
+    def alpha_3(self) -> str:
         """
         This code is commonly used in various international contexts,
         including identifying countries in internet domains, representing countries in airline
@@ -1884,7 +1884,7 @@ class Country(Enum, metaclass=_CountryEnumType):
         return self.unit.numeric
 
     @property
-    def name(self):
+    def name(self) -> str:
         """
         Unofficial country name, known as shorten country name.
 
@@ -1894,7 +1894,7 @@ class Country(Enum, metaclass=_CountryEnumType):
         return self.unit.name
 
     @property
-    def official_name(self):
+    def official_name(self) -> str:
         """
         Official country name.
 

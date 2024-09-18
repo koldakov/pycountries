@@ -2100,7 +2100,7 @@ class Phone(Enum, metaclass=_PhoneEnumType):
         return self.unit.calling_code
 
     @property
-    def value(self):
+    def value(self) -> int:
         """
         Returns:
             ISO 3166-1 Alpha 2 code.

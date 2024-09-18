@@ -1079,7 +1079,7 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
         return self._value_
 
     @property
-    def value(self):
+    def value(self) -> str:
         """
         Returns:
             ISO 4217 code.
@@ -1087,7 +1087,7 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
         return self.unit.alpha_3
 
     @property
-    def alpha_3(self):
+    def alpha_3(self) -> str:
         """
         A three-letter alphabetic code.
         This alphabetic code is used internationally to represent currencies in financial transactions and data.
@@ -1098,7 +1098,7 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
         return self.unit.alpha_3
 
     @property
-    def numeric(self):
+    def numeric(self) -> str:
         """
         Numeric code. Preferred over alphabetic ones, such as in databases or systems where numeric identifiers
         are easier to work with.
@@ -1109,7 +1109,7 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
         return self.unit.numeric
 
     @property
-    def name(self):
+    def name(self) -> str:
         """
         The full currency name.
 
@@ -1119,7 +1119,7 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
         return self.unit.name
 
     @property
-    def digits(self):
+    def digits(self) -> int:
         """
         Maximum currency digits.
         The maximum currency digits for many major currencies like the US Dollar (USD), Euro (EUR),
