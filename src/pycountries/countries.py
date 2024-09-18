@@ -1902,3 +1902,6 @@ class Country(Enum, metaclass=_CountryEnumType):
             World Factbook official state name.
         """
         return self.unit.official_name
+
+    def __str__(self) -> str:
+        return self.value

@@ -1264,3 +1264,6 @@ class Currency(Enum, metaclass=_CurrencyEnumType):
             list[pycountries.currencies.Currency]: The list of currencies which have maximum three digits.
         """
         return cls.three_digits()
+
+    def __str__(self) -> str:
+        return self.value

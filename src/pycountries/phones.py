@@ -2115,3 +2115,6 @@ class Phone(Enum, metaclass=_PhoneEnumType):
         if prefix is None:
             return True
         return self.unit.is_prefix_supported(prefix)
+
+    def __str__(self) -> str:
+        return str(self.value)

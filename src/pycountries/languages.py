@@ -3717,3 +3717,6 @@ class Language(Enum, metaclass=_LanguageEnumType):
             ISO 639-2 Alpha 3 terminology code.
         """
         return self.unit.terminology
+
+    def __str__(self) -> str:
+        return self.value
