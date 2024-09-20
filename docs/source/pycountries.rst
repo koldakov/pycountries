@@ -20,6 +20,22 @@ pycountries.currencies module
    :undoc-members:
    :show-inheritance:
 
+pycountries.languages module
+----------------------------
+
+.. automodule:: pycountries.languages
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pycountries.macro\_languages module
+-----------------------------------
+
+.. automodule:: pycountries.macro_languages
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pycountries.phones module
 -------------------------
 
@@ -28,10 +44,10 @@ pycountries.phones module
    :undoc-members:
    :show-inheritance:
 
-pycountries.languages module
--------------------------
+Module contents
+---------------
 
-.. automodule:: pycountries.languages
+.. automodule:: pycountries
    :members:
    :undoc-members:
    :show-inheritance:
