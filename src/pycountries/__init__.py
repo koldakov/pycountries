@@ -8,6 +8,7 @@ from pycountries.currencies import (
     ZeroAmountNotAllowedError,
 )
 from pycountries.languages import Language
+from pycountries.macro_languages import MacroLanguage
 from pycountries.phones import Phone
 
 __version__ = "1.1.1"
@@ -17,6 +18,7 @@ __all__ = [
     "Country",
     "Currency",
     "Language",
+    "MacroLanguage",
     "NegativeAmountNotAllowedError",
     "Phone",
     "WrongAmountDigitsNumberError",
