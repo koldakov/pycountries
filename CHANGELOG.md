@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2024-09-20
+
+### Added
+
+- Macrolanguages list. For example,
+if you need to get all `m_id` ARA languages you can use the next code:
+```python
+from pycountries import MacroLanguage
+
+print(MacroLanguage("ara", i_status="R"))
+```
+
+### Fixed
+
+- Minor bugs
+
 ## [1.1.1] - 2024-07-20
 
 ### Added
@@ -160,6 +176,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Base Country Model.
 - Base Currency Model.
 
+[1.2.0]: https://github.com/koldakov/pycountries/releases/tag/1.2.0
 [1.1.1]: https://github.com/koldakov/pycountries/releases/tag/1.1.1
 [1.1.0]: https://github.com/koldakov/pycountries/releases/tag/1.1.0
 [1.0.3]: https://github.com/koldakov/pycountries/releases/tag/1.0.3
